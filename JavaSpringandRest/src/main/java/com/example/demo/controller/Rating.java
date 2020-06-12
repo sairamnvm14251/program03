@@ -1,32 +1,41 @@
 package com.example.demo.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.JavaSpringandRestApplication;
 import com.example.demo.entity.Movie;
 import com.example.demo.hsqldbdao.CustomerRatingRepository;
 
 @RestController
 public class Rating {
 
-	@Autowired
-	private Movie movie;
+	
 
 	@Autowired
 	private CustomerRatingRepository repo;
 
+	
 	@GetMapping(value = "path/api/rest/customer/{id}/rate/{rating}", produces = "application/json")
 	
-	public Movie customerRating(@PathVariable("id") int id, @PathVariable("rating") Long rating) {
+	public Optional<Movie> customerRating(@PathVariable("id") Integer id, @PathVariable("rating") Integer rating) {
 		System.out.println(id + "," + rating);
-		movie.setAverageRating(id);
-		movie.setAverageRating(rating);
+		Movie m=new Movie();
+		m.setAverageRating(id);
+		m.setFirstName("jack");
+		m.setLastName("Baeur");
+		m.setAverageRating(rating);
+		m.setCustomerAverageRating(2.32);		
+		repo.save(m);	
 		
-		Movie save = repo.save(movie);
-		System.out.println("movie rating"+save);
-		return save;
+	 Optional<Movie> optionalEntity = repo.findById(id);
+	 
+		System.out.println("movie rating"+optionalEntity);
+		return optionalEntity;
 
 	}
 

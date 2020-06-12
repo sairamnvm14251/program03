@@ -1,39 +1,36 @@
 package com.example.demo.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Repository;
-
 import lombok.Data;
 
 @Entity
-//@Table(name = "movie")
+@Table(name = "movie")
 @Data
-@Repository
 public class Movie {
 
 	@Id
-	private long id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 
-	@Column(columnDefinition = "varchar(25) default 'jack'")
+	//@Column(columnDefinition = "varchar(25) default 'jack'")
 	private String firstName;
-	@Column(columnDefinition = "varchar(25) default 'Bauer'")
+	//@Column(columnDefinition = "varchar(25) default 'Bauer'")
 	private String lastName;
 
-	private Float customerAverageRating;
+	private double customerAverageRating;
 
-	private float averageRating;
+	private double averageRating;
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -53,26 +50,27 @@ public class Movie {
 		this.lastName = lastName;
 	}
 
-	public Float getCustomerAverageRating() {
+	public double getCustomerAverageRating() {
 		return customerAverageRating;
 	}
 
-	public void setCustomerAverageRating(Float customerAverageRating) {
+	public void setCustomerAverageRating(double customerAverageRating) {
 		this.customerAverageRating = customerAverageRating;
 	}
 
-	public float getAverageRating() {
+	public double getAverageRating() {
 		return averageRating;
 	}
 
-	public void setAverageRating(float averageRating) {
+	public void setAverageRating(double averageRating) {
 		this.averageRating = averageRating;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", customerAverageRating="
+		return "Movie [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", customerAverageRating="
 				+ customerAverageRating + ", averageRating=" + averageRating + "]";
 	}
 
+	
 }
