@@ -12,13 +12,12 @@ import org.springframework.stereotype.Repository;
 import lombok.Data;
 
 @Entity
-@Table(name = "movie")
+//@Table(name = "movie")
 @Data
 @Repository
 public class Movie {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	@Column(columnDefinition = "varchar(25) default 'jack'")

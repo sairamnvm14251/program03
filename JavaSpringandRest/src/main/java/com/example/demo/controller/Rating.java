@@ -18,13 +18,15 @@ public class Rating {
 	private CustomerRatingRepository repo;
 
 	@GetMapping(value = "path/api/rest/customer/{id}/rate/{rating}", produces = "application/json")
-	public void customerRating(@PathVariable("id") int id, @PathVariable("rating") float rating) {
+	
+	public Movie customerRating(@PathVariable("id") int id, @PathVariable("rating") Long rating) {
 		System.out.println(id + "," + rating);
 		movie.setAverageRating(id);
 		movie.setAverageRating(rating);
 		
 		Movie save = repo.save(movie);
 		System.out.println("movie rating"+save);
+		return save;
 
 	}
 
