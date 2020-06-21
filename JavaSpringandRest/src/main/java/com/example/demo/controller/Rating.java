@@ -18,8 +18,6 @@ public class Rating {
 
 	
 	@GetMapping(value = "path/api/rest/customer/{id}/rate/{rating}", produces = "application/json")
-	//added from loacal after pull request
-	//added in central
 	
 	
 	
