@@ -18,7 +18,6 @@ public class Rating {
 
 	
 	@GetMapping(value = "path/api/rest/customer/{id}/rate/{rating}", produces = "application/json")
-	//this method is binded to get request
 	public Iterable<Movie> customerRating(@PathVariable("id") Integer id, @PathVariable("rating") Integer rating) {
 		System.out.println(id + "," + rating);
 		Movie m=new Movie();
